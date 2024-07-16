@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Markdown from 'markdown-to-jsx';
+import PageLayout from './PageLayout';
 
 function BlogPost() {
   const { slug } = useParams();
@@ -23,23 +24,23 @@ function BlogPost() {
   }
 
   return (
-    <div className="container mx-auto px-6 py-12">
-      <div className="mb-6 -mt-12">
-        <div className="h-64 md:h-96 bg-cover bg-center rounded-lg shadow-md" style={{ backgroundImage: `url(${blogPost.image_url})` }}>
-        </div>
+    <PageLayout>
+      <div className="mb-6">
+        <div
+          className="h-64 md:h-96 bg-cover bg-center rounded-lg shadow-md"
+          style={{ backgroundImage: `url(${blogPost.image_url})` }}
+        ></div>
       </div>
       <h1 className="text-4xl font-bold mb-4">{blogPost.title}</h1>
-      <p className="text-gray-600 text-sm mb-8">{new Date(blogPost.created_at).toLocaleDateString('en-GB', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric'
-      })}</p>
-      <div className="prose prose-lg max-w-none">
-        <Markdown>
-          {blogPost.content}
-        </Markdown>
-      </div>
-    </div>
+      <p className="text-gray-600 text-sm mb-8">
+        {new Date(blogPost.created_at).toLocaleDateString('en-GB', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        })}
+      </p>
+      <Markdown>{blogPost.content}</Markdown>
+    </PageLayout>
   );
 }
 

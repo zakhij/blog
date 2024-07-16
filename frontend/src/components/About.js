@@ -1,10 +1,11 @@
 import React from 'react';
 import profileImage from '../assets/me.png';
+import PageLayout from './PageLayout';
 import Markdown from 'markdown-to-jsx';
 
 const aboutMeContent = `
 ## Who Are You?
-I'm Zakaria Hijaouy, a software engineer...
+I'm Zak, a software engineer...
 
 ## Why'd You Start The Blog?
 I wanted to share...
@@ -13,21 +14,19 @@ I wanted to share...
 Whatever interests me...
 `;
 
-function AboutMe() {
+function About() {
     return (
-        <div className="container mx-auto px-6 py-12">
-          <div className="flex flex-col items-center mb-8">
-            <img
-              src={profileImage}
-              alt="Profile"
-              className="w-48 h-48 rounded-full"
-            />
-          </div>
-          <div className="prose prose-lg max-w-none">
-            <Markdown>{aboutMeContent}</Markdown>
-          </div>
+      <PageLayout>
+        <div className="flex flex-col items-center">
+          <img
+            src={profileImage}
+            alt="ME"
+            className="w-48 h-48 rounded-full center"
+          />
         </div>
-      );
-}
+        <Markdown>{aboutMeContent}</Markdown>
+      </PageLayout>
+    );
+  }
 
-export default AboutMe;
+export default About;
