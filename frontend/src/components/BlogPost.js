@@ -24,7 +24,7 @@ function BlogPost() {
 
   return (
     <div className="container mx-auto px-6 py-12">
-      <div className="mb-6 -mt-20">
+      <div className="mb-6 -mt-12">
         <div className="h-64 md:h-96 bg-cover bg-center rounded-lg shadow-md" style={{ backgroundImage: `url(${blogPost.image_url})` }}>
         </div>
       </div>
@@ -34,7 +34,7 @@ function BlogPost() {
         month: 'long',
         year: 'numeric'
       })}</p>
-      <div className="prose prose-lg max-w-none text-left">
+      <div className="prose prose-lg max-w-none">
         <Markdown>
           {blogPost.content}
         </Markdown>
