@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+
 function Home() {
   const [blogPosts, setBlogPosts] = useState([]);
 
   useEffect(() => {
-    axios.get('http://192.168.1.72:8000/blogposts/')
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}}/blogposts/`)
       .then(response => {
         setBlogPosts(response.data);
       })

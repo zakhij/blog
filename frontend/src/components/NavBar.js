@@ -4,7 +4,7 @@ import { FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 function Navbar() {
   return (
-    <nav className="bg-white shadow-md fixed w-full z-10">
+    <nav className="bg-white shadow-md fixed w-full z-10 top-0">
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
         <div className="flex items-center">
           <div className="text-xl font-bold text-gray-800">

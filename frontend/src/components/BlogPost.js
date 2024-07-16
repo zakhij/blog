@@ -7,7 +7,7 @@ function BlogPost() {
   const [blogPost, setBlogPost] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://127.0.0.1:8000/blogposts/${slug}/`)
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/blogposts/${slug}/`)
       .then(response => {
         setBlogPost(response.data);
       })
@@ -17,13 +17,22 @@ function BlogPost() {
   }, [slug]);
 
   if (!blogPost) {
-    return <div>Loading...</div>;
+    return <div className="text-center mt-10">Blog not found. </div>;
   }
 
   return (
-    <div>
-      <h1>{blogPost.title}</h1>
-      <p>{blogPost.content}</p>
+    <div className="container mx-auto px-6 py-12">
+      <div className="mb-6 -mt-20">
+        <div className="h-64 md:h-96 bg-cover bg-center rounded-lg shadow-md" style={{ backgroundImage: `url(${blogPost.image_url})` }}>
+        </div>
+      </div>
+      <h1 className="text-4xl font-bold mb-4">{blogPost.title}</h1>
+      <p className="text-gray-600 text-sm mb-8">{new Date(blogPost.created_at).toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      })}</p>
+      <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: blogPost.content }}></div>
     </div>
   );
 }
