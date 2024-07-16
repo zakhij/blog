@@ -7,7 +7,7 @@ function Home() {
   const [blogPosts, setBlogPosts] = useState([]);
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_BACKEND_URL}}/blogposts/`)
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/blogposts/`)
       .then(response => {
         setBlogPosts(response.data);
       })

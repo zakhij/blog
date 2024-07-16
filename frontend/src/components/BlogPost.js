@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import Markdown from 'markdown-to-jsx';
 
 function BlogPost() {
   const { slug } = useParams();
@@ -10,6 +11,7 @@ function BlogPost() {
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/blogposts/${slug}/`)
       .then(response => {
         setBlogPost(response.data);
+        console.log(response.data);
       })
       .catch(error => {
         console.error('There was an error fetching the blog post!', error);
@@ -32,7 +34,11 @@ function BlogPost() {
         month: 'long',
         year: 'numeric'
       })}</p>
-      <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: blogPost.content }}></div>
+      <div className="prose prose-lg max-w-none text-left">
+        <Markdown>
+          {blogPost.content}
+        </Markdown>
+      </div>
     </div>
   );
 }

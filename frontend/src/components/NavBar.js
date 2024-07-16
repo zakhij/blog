@@ -8,7 +8,7 @@ function Navbar() {
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
         <div className="flex items-center">
           <div className="text-xl font-bold text-gray-800">
-            <Link to="/">Zak's Blog</Link>
+            <Link to="/">Z-Brain</Link>
           </div>
         </div>
         <div className="flex items-center space-x-6">
