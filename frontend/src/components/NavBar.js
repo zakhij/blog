@@ -8,15 +8,21 @@ function Navbar() {
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
         <div className="flex items-center">
           <div className="text-xl font-bold text-gray-800">
-            <Link to="/">Zak's Blog</Link>
+            <Link to="/">Z-Brain</Link>
           </div>
           <div className="ml-6">
             <Link
               to="/about"
               className="text-gray-800 hover:text-gray-600 transition duration-200"
             >
-              About Me
+              About
             </Link>
+            <a
+              href="https://www.paypal.com/donate/?business=43DUFCTWDUF2A&amount=3&no_recurring=0&currency_code=USD"
+              className="text-gray-800 hover:text-gray-600 transition duration-200 ml-4"
+            >
+              Donate
+            </a>
           </div>
         </div>
         <div className="flex items-center space-x-6">
