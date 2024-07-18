@@ -17,14 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from app.views import BlogPostViewSet
+from app.views import BlogPostViewSet, CommentViewSet
 
 router = DefaultRouter()
 router.register(r'blogposts', BlogPostViewSet)
-
-urlpatterns = [
-    path('', include(router.urls)),
-]
+router.register(r'blogposts/(?P<blog_post_slug>[^/.]+)/comments', CommentViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
