@@ -50,8 +50,6 @@ function BlogPost() {
       });
   };
 
-
-
   if (!blogPost) {
     return <div className="text-center mt-10">Blog not found. </div>;
   }
@@ -75,7 +73,26 @@ function BlogPost() {
       <Markdown>{blogPost.content}</Markdown>
 
       <div className="mt-12">
-        <h2 className="text-2xl font-bold mb-4">Share Your Thoughts!</h2>
+        <h2 className="text-2xl font-bold mb-4">Comments</h2>
+        {comments.map(comment => (
+          <div key={comment.id} className="mb-2">
+            <p className="text-gray-800 font-semibold" style={{ marginBottom: '0px' }}>{comment.author}</p>
+            <p className="text-gray-600 text-xs">
+              {new Date(comment.created_at).toLocaleString('en-GB', {
+                timeZone: 'America/Los_Angeles',
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+              })} PST
+            </p>
+            <p className="text-gray-700">{comment.content}</p>
+            <hr className="mt-2 mb-2 border-gray-300" />
+          </div>
+        ))}
+
+        <h2 className="text-2xl font-bold mb-4" style={{ marginTop: '20px' }}>Share Your Thoughts!</h2>
         <form onSubmit={handleCommentSubmit} className="mb-8">
           <div className="mb-4">
             <label className="block text-gray-700">Name</label>
@@ -101,24 +118,11 @@ function BlogPost() {
           </div>
           <button
             type="submit"
-            className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300"
+            className="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition duration-300"
           >
             Post Comment
           </button>
         </form>
-
-        <h2 className="text-2xl font-bold mb-4">Comments</h2>
-        {comments.map(comment => (
-          <div key={comment.id} className="mb-4">
-            <p className="text-gray-800 font-semibold">{comment.author}</p>
-            <p className="text-gray-600 text-sm">{new Date(comment.created_at).toLocaleDateString('en-GB', {
-              day: 'numeric',
-              month: 'long',
-              year: 'numeric'
-            })}</p>
-            <p className="text-gray-700">{comment.content}</p>
-          </div>
-        ))}
       </div>
     </PageLayout>
   );
