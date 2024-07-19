@@ -14,7 +14,7 @@ function BlogPost() {
   const filter = new Filter();
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_BACKEND_URL}/blogposts/${slug}/`)
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/blogposts/${slug}/`)
       .then(response => {
         setBlogPost(response.data);
       })
@@ -22,7 +22,7 @@ function BlogPost() {
         console.error('There was an error fetching the blog post!', error);
       });
 
-    axios.get(`${process.env.REACT_APP_BACKEND_URL}/blogposts/${slug}/comments/`)
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/blogposts/${slug}/comments/`)
       .then(response => {
         const filteredComments = response.data.map(comment => ({
           ...comment,
@@ -48,7 +48,7 @@ function BlogPost() {
       ...newComment,
       blog_post: blogPost.id, 
     };
-    axios.post(`${process.env.REACT_APP_BACKEND_URL}/blogposts/${slug}/comments/`, payload)
+    axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/blogposts/${slug}/comments/`, payload)
       .then(response => {
         const filteredComment = {
           ...response.data,
