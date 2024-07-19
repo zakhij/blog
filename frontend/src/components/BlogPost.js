@@ -3,12 +3,15 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Markdown from 'markdown-to-jsx';
 import PageLayout from './PageLayout';
+import Filter from 'bad-words';
 
 function BlogPost() {
   const { slug } = useParams();
   const [blogPost, setBlogPost] = useState(null);
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState({ author: '', content: '' });
+
+  const filter = new Filter();
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/blogposts/${slug}/`)
@@ -21,7 +24,12 @@ function BlogPost() {
 
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/blogposts/${slug}/comments/`)
       .then(response => {
-        setComments(response.data);
+        const filteredComments = response.data.map(comment => ({
+          ...comment,
+          author: filter.clean(comment.author),
+          content: filter.clean(comment.content),
+        }));
+        setComments(filteredComments);
     })
     .catch(error => {
       console.error('There was an error fetching the comments!', error);
@@ -42,7 +50,12 @@ function BlogPost() {
     };
     axios.post(`${process.env.REACT_APP_BACKEND_URL}/blogposts/${slug}/comments/`, payload)
       .then(response => {
-        setComments([...comments, response.data]);
+        const filteredComment = {
+          ...response.data,
+          author: filter.clean(response.data.author),
+          content: filter.clean(response.data.content),
+        };
+        setComments([...comments, filteredComment]);
         setNewComment({ author: '', content: '' });
       })
       .catch(error => {
