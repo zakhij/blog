@@ -20,6 +20,9 @@ class RateLimitMiddleware(MiddlewareMixin):
         thread.start()
 
     def process_request(self, request):
+        if request.method != 'POST':
+            return self.get_response(request)
+         
         ip = request.META.get('REMOTE_ADDR')
         if ip not in self.requests:
             self.requests[ip] = []
