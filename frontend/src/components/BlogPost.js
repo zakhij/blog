@@ -87,23 +87,28 @@ function BlogPost() {
 
       <div className="mt-12">
         <h2 className="text-2xl font-bold mb-4">Comments</h2>
-        {comments.map(comment => (
-          <div key={comment.id} className="mb-2">
-            <p className="text-gray-800 font-semibold" style={{ marginBottom: '0px' }}>{comment.author}</p>
-            <p className="text-gray-600 text-xs">
-              {new Date(comment.created_at).toLocaleString('en-GB', {
-                timeZone: 'America/Los_Angeles',
-                day: 'numeric',
-                month: 'long',
-                year: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-              })} PST
-            </p>
-            <p className="text-gray-700">{comment.content}</p>
-            <hr className="mt-2 mb-2 border-gray-300" />
-          </div>
-        ))}
+
+        {comments.length === 0 ? (
+          <p className="text-gray-500 italic">No comments yet... Be the first!</p>
+        ) : (
+          comments.map(comment => (
+            <div key={comment.id} className="mb-2">
+              <p className="text-gray-800 font-semibold" style={{ marginBottom: '0px' }}>{comment.author}</p>
+              <p className="text-gray-600 text-xs">
+                {new Date(comment.created_at).toLocaleString('en-GB', {
+                  timeZone: 'America/Los_Angeles',
+                  day: 'numeric',
+                  month: 'long',
+                  year: 'numeric',
+                  hour: '2-digit',
+                  minute: '2-digit'
+                })} PST
+              </p>
+              <p className="text-gray-700">{comment.content}</p>
+              <hr className="mt-2 mb-2 border-gray-300" />
+            </div>
+          ))
+        )}
 
         <h2 className="text-2xl font-bold mb-4" style={{ marginTop: '20px' }}>Share Your Thoughts!</h2>
         <form onSubmit={handleCommentSubmit} className="mb-8">
