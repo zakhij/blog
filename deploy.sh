@@ -10,6 +10,12 @@ npm run build
 echo "Copying build contents to static directory..."
 cp -r build/* ../
 
+echo "Copying static contents to static directory..."
+mv manifest.json ../staticfiles
+mv favicon.ico ../staticfiles
+mv logo* ../staticfiles
+mv asset-manifest.json ../staticfiles
+
 echo "Running collectstatic..."
 cd ..
 python manage.py collectstatic --noinput
