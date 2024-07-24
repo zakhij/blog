@@ -3,7 +3,6 @@
 echo "Pulling latest changes from Git repository..."
 git pull
 
-# Navigate to frontend directory and build the project
 echo "Building frontend..."
 cd frontend
 npm install
