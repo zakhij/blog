@@ -64,6 +64,10 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ORIGIN_WHITELIST = config('CORS_ORIGIN_WHITELIST', cast=Csv())
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://signalinthehaystack.xyz',
+]
+
 
 ROOT_URLCONF = 'backend.urls'
 
