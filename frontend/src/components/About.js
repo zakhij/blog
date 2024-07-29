@@ -5,7 +5,7 @@ import Markdown from 'markdown-to-jsx';
 
 const aboutMeContent = `
 ## Who Are You?
-I'm Zak, a software engineer based in California. 
+I'm Zak, an engineer based in California. 
 
 ## Why'd You Start This Blog?
 Writing helps me organize my thoughts; even without this blog, I'd write small essays 

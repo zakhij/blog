@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaGithub, FaTwitter } from 'react-icons/fa';
 
 
 function Navbar() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <nav className="bg-white shadow-md fixed w-full z-10 top-0">
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
         <div className="flex items-center">
           <div className="text-xl font-bold text-gray-800">
-            <Link to="/">Signal in The Haystack</Link>
+            <Link to="/">{isMobile ? 'SITH' : 'Signal in The Haystack'}</Link>
           </div>
           <div className="ml-6">
             <Link
