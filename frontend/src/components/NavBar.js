@@ -4,10 +4,10 @@ import { FaGithub, FaTwitter } from 'react-icons/fa';
 
 
 function Navbar() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 500);
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    const handleResize = () => setIsMobile(window.innerWidth < 500);
     window.addEventListener('resize', handleResize);
 
     return () => {
