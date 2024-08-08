@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 
-# Create your models here.
+# Data model for blog posts
 class BlogPost(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
@@ -19,7 +19,7 @@ class BlogPost(models.Model):
     def __str__(self):
         return self.title
     
-
+# Data model for comments
 class Comment(models.Model):
     blog_post = models.ForeignKey(BlogPost, related_name='comments', on_delete=models.CASCADE)
     author = models.CharField(max_length=100)

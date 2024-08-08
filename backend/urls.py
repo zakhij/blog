@@ -23,6 +23,7 @@ router = DefaultRouter()
 router.register(r'blogposts', BlogPostViewSet)
 router.register(r'blogposts/(?P<blog_post_slug>[^/.]+)/comments', CommentViewSet)
 
+#URL configuration for backend
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),

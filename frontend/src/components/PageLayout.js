@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Provides the default layout, including styling, for all non-home pages.
 function PageLayout({ children }) {
   return (
     <div className="container mx-auto px-6 max-w-screen-lg">

@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+// Logic for the homepage.
+
 function Home() {
   const [blogPosts, setBlogPosts] = useState([]);
   
   useEffect(() => {
+    // Ping the backend to get the list of blog posts to display.
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/blogposts/`)
       .then(response => {
         setBlogPosts(response.data);
@@ -22,6 +25,7 @@ function Home() {
     <div className="container mx-auto px-6 py-3 max-w-screen-lg">
       <h1 className="text-3xl font-bold mb-6">Latest Essays</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        {/* Display the latest 3 posts with an associated image/title card at the top. */}
         {latestPosts.map(post => (
           <Link to={`/blogposts/${post.slug}`} key={post.slug} className="group">
             <div className="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl flex flex-col h-full">
@@ -51,6 +55,7 @@ function Home() {
 
       <h1 className="text-3xl font-bold mb-6">All Essays</h1>
       <div className="divide-y divide-gray-200">
+        {/* Display all blog posts. */}
         {blogPosts.map(post => (
           <div key={post.slug} className="py-4">
             <Link to={`/blogposts/${post.slug}`} className="text-xl font-bold hover:underline">

@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaGithub, FaTwitter } from 'react-icons/fa';
 
+//Logic for website's navigation bar present at the top of every page, linking to other pages.
 
 function Navbar() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 500);
 
   useEffect(() => {
+    // Check the dimensions of the window when the component mounts. 
+    // If the window is small, we use abbreviated version of website name.
     const handleResize = () => setIsMobile(window.innerWidth < 500);
     window.addEventListener('resize', handleResize);
 
