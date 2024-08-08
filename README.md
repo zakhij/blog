@@ -27,8 +27,8 @@ My own personal blog web application! With a Python backend and a React frontend
 
 1. **Clone the Repository**
     ```bash
-    git clone https://github.com/zakhij/signal-in-the-haystack.git
-    cd signal-in-the-haystack
+    git clone https://github.com/zakhij/blog.git
+    cd blog
     ```
 
 2. **Install Requirements**
@@ -63,7 +63,14 @@ My own personal blog web application! With a Python backend and a React frontend
     ./deploy.sh
     ```
 
-6. **Run the Backend Server (Production)**
+6. **Run the Backend/Frontend Servers (Development)**
+    ```bash
+    python manage.py runserver 0.0.0.0:8000
+    cd frontend
+    npm start
+    ```
+
+7. **Run the Backend Server (Production)**
     ```bash
     gunicorn --workers 3 backend.wsgi:application --bind 0.0.0.0:8000
     ```
@@ -91,7 +98,7 @@ My own personal blog web application! With a Python backend and a React frontend
 
         # Serve frontend static files
         location / {
-            root /path/to/your/project/root/signal-in-the-haystack/frontend/build;
+            root /path/to/your/project/root/blog/frontend/build;
             try_files $uri /index.html;
         }
 
@@ -114,12 +121,7 @@ My own personal blog web application! With a Python backend and a React frontend
     }
     ```
 
-7. **Run the Backend/Frontend Servers (Development)**
-    ```bash
-    python manage.py runserver 0.0.0.0:8000
-    cd frontend
-    npm start
-    ```
+
 
 
 
