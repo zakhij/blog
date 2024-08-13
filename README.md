@@ -50,6 +50,9 @@ My own personal blog web application! With a Python backend and a React frontend
     SECRET_KEY=django-XXX
     ALLOWED_HOSTS=signalinthehaystack.xyz
     CORS_ORIGIN_WHITELIST=https://signalinthehaystack.xyz
+    EMAIL_HOST_USER = signalinthehaystackbot@gmail.com
+    EMAIL_HOST_PASSWORD = app-password
+    DEFAULT_FROM_EMAIL = 'Signal in the Haystack <signalinthehaystackbot@gmail.com>' 
     ```
 
     `frontend/.env`:
