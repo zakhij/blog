@@ -1,5 +1,9 @@
 from django.db import models
 from django.utils.text import slugify
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from app.emails import send_new_blog_email
+
 
 # Data model for blog posts
 class BlogPost(models.Model):
@@ -11,6 +15,7 @@ class BlogPost(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    # Automatically generate slug when a new blog post is created
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
@@ -28,3 +33,18 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'Comment by {self.author} on {self.blog_post}'
+
+# Data model for subscriber email list
+class Subscriber(models.Model):
+    email = models.EmailField(unique=True)
+    subscribed_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email
+
+# Signal to send notification email to subscribers when a new blog post is created
+@receiver(post_save, sender=BlogPost)
+def send_notification_email_to_subscribers(sender, instance, created, **kwargs):
+    if created:
+        subscribers = Subscriber.objects.all()
+        send_new_blog_email(instance, subscribers)

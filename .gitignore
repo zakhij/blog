@@ -10,3 +10,4 @@ index.html
 manifest.json
 robots.txt
 logo*
+django_error.log
