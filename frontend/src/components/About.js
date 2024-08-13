@@ -9,17 +9,16 @@ const aboutMeContent = `
 ## Who Are You?
 I'm Zak, a software engineer based in California. 
 
-## Why'd You Start This Blog?
+## Why'd I Start This Blog?
 I like to write small essays about whatever I'm thinking on, as it helps organize my thoughts. 
-I figured I might as well share my writing pieces with the world: give readers something to think about
-and get feedback.
+I figured I might as well share my writing with the world. Hopefully I give readers something to think about.
 
-## What Do You Write About?
+## What Do I Write About?
 My essays are usually sparked by something I've experienced in my life or read about. So really,
 whatever interests me :)
 
 
-## How Can I Contact You?
+## How Can I be Contacted?
 Feel free to write me an email at zakhijaouy@gmail.com.
 
 `;
