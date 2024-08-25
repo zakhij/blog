@@ -4,6 +4,8 @@ import Home from './components/Home';
 import BlogPost from './components/BlogPost';
 import NavBar from './components/NavBar';
 import About from './components/About';
+import Unsubscribe from './components/Unsubscribe';
+import Subscribe from './components/Subscribe';
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
           <Route exact path="/" element={<Home/>} />
           <Route path="/about" element={<About/>} />
           <Route path="/blogposts/:slug" element={<BlogPost />} />
+          <Route path="/unsubscribe/:email" element={<Unsubscribe />} />
+          <Route path="/subscribe" element={<Subscribe />} />
         </Routes>
         </div>
       </div>

@@ -25,12 +25,18 @@ function Navbar() {
           <div className="text-xl font-bold text-gray-800">
             <Link to="/">{isMobile ? 'SITH' : 'Signal in The Haystack'}</Link>
           </div>
-          <div className="ml-6">
+          <div className="ml-6 flex space-x-4">
             <Link
               to="/about"
               className="text-gray-800 hover:text-gray-600 transition duration-200"
             >
               About
+            </Link>
+            <Link
+              to="/subscribe"
+              className="text-gray-800 hover:text-gray-600 transition duration-200"
+            >
+              Subscribe
             </Link>
             <a
               href="https://www.paypal.com/donate/?business=43DUFCTWDUF2A&amount=3&no_recurring=0&currency_code=USD"
@@ -40,7 +46,7 @@ function Navbar() {
             </a>
           </div>
         </div>
-        <div className="flex items-center space-x-6">
+        <div className="hidden md:flex items-center space-x-6">
           <a href="https://github.com/zakhij" target="_blank" rel="noopener noreferrer">
             <FaGithub className="text-gray-800 text-2xl transform transition-transform duration-200 hover:scale-110" />
           </a>
