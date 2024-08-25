@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Blog Postwoooooo</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -53,12 +52,14 @@
     <p> Hey there!</p>
     <p>A new blog post is up on Signal in the Haystack. Go check it out!</p>
     <div class="container">
-        <a href="https://signalinthehaystack.xyz/blogposts/{{ blog.slug }}" class="card">
+        <a href="{{email_website}}/blogposts/{{ blog.slug }}" class="card">
             <h1>{{ blog.title }}</h1>
             <p>{{ blog.description }}</p>
             <img src="{{ blog.image_url }}" alt="{{ blog.title }}">
-            
         </a>
+    </div>
+    <div class="footer">
+        <p>If you no longer wish to receive these emails, you can <a href="{{email_website}}/unsubscribe/{{subscriber.token}}">unsubscribe here</a>.</p>
     </div>
 </body>
 </html>

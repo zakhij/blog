@@ -17,7 +17,7 @@ function App() {
           <Route exact path="/" element={<Home/>} />
           <Route path="/about" element={<About/>} />
           <Route path="/blogposts/:slug" element={<BlogPost />} />
-          <Route path="/unsubscribe/:email" element={<Unsubscribe />} />
+          <Route path="/unsubscribe/:token" element={<Unsubscribe />} />
           <Route path="/subscribe" element={<Subscribe />} />
         </Routes>
         </div>

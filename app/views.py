@@ -46,11 +46,11 @@ class SubscribeView(generics.CreateAPIView):
 class UnsubscribeView(generics.DestroyAPIView):
     queryset = Subscriber.objects.all()
     serializer_class = SubscriberSerializer
-    lookup_field = "email"
+    lookup_field = "token"
 
     def delete(self, request, *args, **kwargs):
-        email = self.kwargs["email"]
-        subscriber = get_object_or_404(Subscriber, email=email)
+        token = self.kwargs["token"]
+        subscriber = get_object_or_404(Subscriber, token=token)
         subscriber.delete()
         return response.Response(
             {"detail": "You have been unsubscribed and your data has been deleted."},

@@ -14,18 +14,20 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from app.views import BlogPostViewSet, CommentViewSet, SubscribeView
+from app.views import BlogPostViewSet, CommentViewSet, SubscribeView, UnsubscribeView
 
 router = DefaultRouter()
-router.register(r'blogposts', BlogPostViewSet)
-router.register(r'blogposts/(?P<blog_post_slug>[^/.]+)/comments', CommentViewSet)
+router.register(r"blogposts", BlogPostViewSet)
+router.register(r"blogposts/(?P<blog_post_slug>[^/.]+)/comments", CommentViewSet)
 
-#URL configuration for backend
+# URL configuration for backend
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),
-    path('api/subscribe/', SubscribeView.as_view()),
+    path("admin/", admin.site.urls),
+    path("api/", include(router.urls)),
+    path("api/subscribe/", SubscribeView.as_view()),
+    path("api/unsubscribe/<str:token>/", UnsubscribeView.as_view(), name="unsubscribe"),
 ]
