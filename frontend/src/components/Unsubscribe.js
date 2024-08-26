@@ -26,7 +26,7 @@ export default function Unsubscribe() {
             <div className="flex justify-center items-center min-h-screen bg-gray-100">
                 <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full text-center">
                     <h2 className="text-2xl font-semibold text-gray-800 mb-6">Unsubscribe from Email Updates</h2>
-                    <p className="mb-4">Are you sure you want to unsubscribe from email updates?</p>
+                    <p className="mb-4">Are you sure you want to unsubscribe?</p>
                     <button
                         onClick={handleUnsubscribe}
                         disabled={loading}
