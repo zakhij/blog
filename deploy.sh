@@ -9,10 +9,10 @@ npm install
 npm run build
 
 echo "Migrating database..."
+cd ../
 python manage.py migrate
 
 echo "Static files..."
-cd ../
 python manage.py collectstatic --noinput
 
 echo "Deployment complete"
