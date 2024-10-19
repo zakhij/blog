@@ -1,7 +1,11 @@
 # Signal in the Haystack Personal Blog
 
-My own personal blog web application! With a Python backend and a React frontend (using CRA), the web app is deployed on a cloud-hosted VM. You can access the site at [signalinthehaystack.xyz](https://signalinthehaystack.xyz).
+A personal blog web application using a Django-based Python backend and a React frontend (using CRA). Previously accessible at [signalinthehaystack.xyz](https://signalinthehaystack.xyz), but since relocated to [Substack](https://signalinthehaystack.substack.com/).
 
+
+## Demo
+
+![Demo](./images/demo.gif)
 
 
 
